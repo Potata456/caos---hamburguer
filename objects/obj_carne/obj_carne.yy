@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_colisao",
+  "%Name":"obj_carne",
   "eventList":[],
   "managed":true,
-  "name":"obj_colisao",
+  "name":"obj_carne",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misck",
-    "path":"folders/Objects/Misck.yy",
+    "name":"Ingredientes",
+    "path":"folders/Objects/Ingredientes.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_colisao",
-    "path":"sprites/spr_colisao/spr_colisao.yy",
+    "name":"spr_carne",
+    "path":"sprites/spr_carne/spr_carne.yy",
   },
   "spriteMaskId":null,
   "visible":true,

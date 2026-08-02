@@ -10,6 +10,10 @@ left    = false;
 right   = false;
 top     = false;
 down    = false;
+interagir = false;
+
+// Máquina de estados
+estado_atual = noone;
 
 #endregion
 
@@ -24,6 +28,7 @@ pega_inputs = function()
     right   = keyboard_check(ord("D"));
     top     = keyboard_check(ord("W"));
     down    = keyboard_check(ord("S"));
+    interagir = keyboard_check_pressed(ord("E"));
 }
 
 // Método para aplicar o movimento
@@ -56,5 +61,47 @@ olha_certo = function()
     }
 }
 // ==========================================================
+// Método para checar se está perto de objeto que da para interagir
+proximo_interagir = function()
+{
+    if (!instance_exists(obj_caixa)) return;
+        
+    var _dis = point_distance(x, y, obj_caixa.x, obj_caixa.y)
+    
+    if (_dis < 20)
+    {
+        if (interagir)
+        {
+            instance_create_layer(x, y, "ingredientes", obj_carne);
+        }
+    }
+    else
+    {
+        
+    }
+}
 
+// ==========================================================
+// Método se o player estiver parado
+estado_parado = function()
+{
+    velh = 0;
+    velv = 0;
+    
+    // Troca para o estado de movendo
+    if (left xor right || top xor down) estado_atual = estado_movendo;
+}
+
+// Método se o player estiver se movendo
+estado_movendo = function()
+{
+    aplica_movimento();
+    
+    // Troca para o estada de parado
+    if (velh == 0 && velv == 0) estado_atual = estado_parado;
+}
+
+// Começa no estado parado
+estado_atual = estado_parado;
+// ==========================================================
 #endregion

@@ -19,14 +19,14 @@
   "height":16,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"c73585c1-aed5-4be2-84c8-207a6dd7ee7d","blendMode":0,"displayName":"default","isLocked":false,"name":"c73585c1-aed5-4be2-84c8-207a6dd7ee7d","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"c73585c1-aed5-4be2-84c8-207a6dd7ee7d","blendMode":0,"displayName":"default","isLocked":false,"name":"c73585c1-aed5-4be2-84c8-207a6dd7ee7d","opacity":75.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_colisao",
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Misck",
+    "path":"folders/Sprites/Misck.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

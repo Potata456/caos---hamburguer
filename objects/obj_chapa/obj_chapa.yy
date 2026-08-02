@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_colisao",
+  "%Name":"obj_chapa",
   "eventList":[],
   "managed":true,
-  "name":"obj_colisao",
+  "name":"obj_chapa",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misck",
-    "path":"folders/Objects/Misck.yy",
+    "name":"Móveis",
+    "path":"folders/Objects/Móveis.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_colisao",
-    "path":"sprites/spr_colisao/spr_colisao.yy",
+    "name":"spr_chapa",
+    "path":"sprites/spr_chapa/spr_chapa.yy",
   },
   "spriteMaskId":null,
   "visible":true,

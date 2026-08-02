@@ -1,7 +1,8 @@
-// Pega os inputs do player, faz ele se over e colidir
+// Pega os inputs do player, faz ele se mover, colidir e ohar para o lado certo
 pega_inputs();
-aplica_movimento();
 colisao();
 olha_certo();
+estado_atual();
 
 // 
+proximo_interagir();
