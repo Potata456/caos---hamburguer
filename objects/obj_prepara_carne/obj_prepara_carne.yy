@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_caixa",
+  "%Name":"obj_prepara_carne",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_caixa",
+  "name":"obj_prepara_carne",
   "overriddenProperties":[],
   "parent":{
     "name":"Móveis",
@@ -26,15 +26,13 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v2","%Name":"tipo_ingrediente","filters":[],"listItems":[],"multiselect":false,"name":"tipo_ingrediente","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INGREDIENTE.CARNE","varType":4,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_caixa",
-    "path":"sprites/spr_caixa/spr_caixa.yy",
+    "name":"spr_prepara_carne",
+    "path":"sprites/spr_prepara_carne/spr_prepara_carne.yy",
   },
   "spriteMaskId":null,
   "visible":true,

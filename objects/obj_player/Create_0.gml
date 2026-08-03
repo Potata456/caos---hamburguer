@@ -81,7 +81,7 @@ interage_caixa = function()
     if (meu_item != noone) return;
         
     // Checa a caixa mais próxima na room
-    var _caixa_proxima = instance_nearest(x, y, obj_caixa);
+    var _caixa_proxima = instance_nearest(x,y, obj_bancada_caixa);
     
     // Se tiver uma caixa
     if (_caixa_proxima != noone)
@@ -98,6 +98,7 @@ interage_caixa = function()
                 _item.image_index = _caixa_proxima.tipo_ingrediente;
                 
                 meu_item = _item;
+                meu_item.sendo_segurado = true;
             }
         }
     }
@@ -121,6 +122,7 @@ checa_ingrediende = function()
             if (interagir)
             {
                 meu_item = _ingrediente_proximo;
+                meu_item.sendo_segurado = true;
             }
         }
     }
@@ -164,14 +166,9 @@ soltar_item = function()
             with(meu_item)
             {
                 solto = true;
+                sendo_segurado = false;
                 alvo_x = _alvo_x;
                 alvo_y = _alvo_y;
-                
-                // Se for um prato, desmarca a variável de segurado
-                if (variable_instance_exists(id, "sendo_segurado"))
-                {
-                    sendo_segurado = false;
-                }
             }
             
             // Limpa a mão do player
@@ -198,6 +195,31 @@ checa_prato = function()
             {
                 meu_item = _prato_proximo;
                 meu_item.sendo_segurado = true;
+            }
+        }
+    }
+}
+
+checa_bancada_prato = function()
+{
+    if (meu_item != noone) return;
+        
+    var _bancada_proxima = instance_nearest(x, y, obj_bancada_prato);
+    
+    if (_bancada_proxima != noone)
+    {
+        var _dis = point_distance(x, y, _bancada_proxima.x, _bancada_proxima.y);
+        
+        if (_dis < dis_max)
+        {
+            if (interagir)
+            {
+                meu_item = _bancada_proxima.gerar_prato();
+                
+                if (meu_item != noone)
+                {
+                    meu_item.sendo_segurado = true;
+                }
             }
         }
     }

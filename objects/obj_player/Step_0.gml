@@ -6,7 +6,8 @@ olha_certo();
 // Interage com objetos
 interage_caixa();
 checa_ingrediende();
-checa_prato();
+checa_prato(); 
+checa_bancada_prato();
 
 estado_atual();
 

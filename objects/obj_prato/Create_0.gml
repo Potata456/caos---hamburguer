@@ -37,7 +37,10 @@ adicionar_ingrediente = function(_tipo_ingrediente)
         return false; // Rejeita se tentar colocar outra coisa primeiro
     }
     
-    // Regra 2: Se colocou o pão de cima, finaliza o hambúrguer!
+    // Regra 2: Se a carne for crua ou queimada não vai no hamburguer
+    if (_tipo_ingrediente == INGREDIENTE.CARNE_CRUA || _tipo_ingrediente == INGREDIENTE.CARNE_QUEIMADA) return false;
+    
+    // Regra 3: Se colocou o pão de cima, finaliza o hambúrguer!
     if (_tipo_ingrediente == INGREDIENTE.PAO_CIMA)
     {
         array_push(ingredientes_prato, _tipo_ingrediente);
