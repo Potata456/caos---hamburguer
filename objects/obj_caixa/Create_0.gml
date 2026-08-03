@@ -1,1 +1,1 @@
-image_index = indice;
+image_index = tipo_ingrediente;

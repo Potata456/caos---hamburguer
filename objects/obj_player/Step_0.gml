@@ -2,7 +2,15 @@
 pega_inputs();
 colisao();
 olha_certo();
+
+// Interage com objetos
+interage_caixa();
+checa_ingrediende();
+checa_prato();
+
 estado_atual();
 
-// 
-proximo_interagir();
+// Atualiza a posição do item e joga ele fora
+atualiza_posicao_item();
+soltar_item();
+

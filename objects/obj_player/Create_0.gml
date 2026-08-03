@@ -6,14 +6,21 @@ velh    = 0;
 velv    = 0;
 
 // Inputs do player
-left    = false;
-right   = false;
-top     = false;
-down    = false;
-interagir = false;
+left        = false;
+right       = false;
+top         = false;
+down        = false;
+interagir   = false;
+soltar      = false;
 
 // Máquina de estados
 estado_atual = noone;
+
+// Variáveu para saber se o player está com um item na mão
+meu_item = noone;
+
+// Distanca máxima de coleta de itens e interação com os objetos
+dis_max = 16;
 
 #endregion
 
@@ -24,11 +31,15 @@ estado_atual = noone;
 // Método para pegar os inputs do player
 pega_inputs = function()
 {
-    left    = keyboard_check(ord("A"));
-    right   = keyboard_check(ord("D"));
-    top     = keyboard_check(ord("W"));
-    down    = keyboard_check(ord("S"));
-    interagir = keyboard_check_pressed(ord("E"));
+    // Teclado
+    left        = keyboard_check(ord("A"));
+    right       = keyboard_check(ord("D"));
+    top         = keyboard_check(ord("W"));
+    down        = keyboard_check(ord("S"));
+    
+    // Mouse
+    interagir   = mouse_check_button_pressed(mb_left);
+    soltar      = mouse_check_button_pressed(mb_right);
 }
 
 // Método para aplicar o movimento
@@ -61,32 +72,155 @@ olha_certo = function()
     }
 }
 // ==========================================================
-// Método para checar se está perto de objeto que da para interagir
-proximo_interagir = function()
+
+// Interação com objetos ======================================
+// Método para checar se está perto de uma caixa para interagir
+interage_caixa = function()
 {
-    if (!instance_exists(obj_caixa)) return;
+    // Se o player já tem um item, ele não pode pegar outro
+    if (meu_item != noone) return;
         
-    var _dis = point_distance(x, y, obj_caixa.x, obj_caixa.y)
+    // Checa a caixa mais próxima na room
+    var _caixa_proxima = instance_nearest(x, y, obj_caixa);
     
-    if (_dis < 20)
+    // Se tiver uma caixa
+    if (_caixa_proxima != noone)
     {
-        if (interagir)
+        // Checa uma distancia para interagir com a caixa
+        var _dir = point_distance(x, y, _caixa_proxima.x, _caixa_proxima.y);
+        
+        if (_dir < dis_max)
         {
-            instance_create_layer(x, y, "ingredientes", obj_carne);
+            // Se interagir cria um ingrediente
+            if (interagir)
+            {
+                var _item = instance_create_layer(x, y, "ingredientes", obj_ingrediente);
+                _item.image_index = _caixa_proxima.tipo_ingrediente;
+                
+                meu_item = _item;
+            }
+        }
+    }
+}
+
+//  Checa se tem um ingrediente está perto do player
+checa_ingrediende = function()
+{
+    // Se o player já tem um item, ele não pode pegar outro
+    if (meu_item != noone) return;
+        
+    // Checa se tem um ingrediente próximo
+    var _ingrediente_proximo = instance_nearest(x, y, obj_ingrediente);
+    
+    if (_ingrediente_proximo != noone)
+    {
+        var _dis = point_distance(x, y,_ingrediente_proximo.x, _ingrediente_proximo.y);
+        
+        if (_dis < dis_max)
+        {
+            if (interagir)
+            {
+                meu_item = _ingrediente_proximo;
+            }
+        }
+    }
+}
+
+// Método para atualiza a posição do ingrediente na cabeça do player
+atualiza_posicao_item = function()
+{
+    if (meu_item != noone)
+    {
+        if (instance_exists(meu_item))
+        {
+            meu_item.x = x;
+            meu_item.y = y - 10;
+            
+            meu_item.depth = depth - 1;
         }
     }
     else
     {
+        meu_item = noone;
+    }
+}
+
+// Método para jogar o item fora
+soltar_item = function()
+{
+    if (meu_item != noone)
+    {
+        if (soltar)
+        {
+            var _ang_mouse = point_direction(x, y, mouse_x, mouse_y);
+            var _dis_mouse = point_distance(x, y, mouse_x, mouse_y);
+            
+            // Limita a distância máxima que o player pode arremessar
+            var _dis_alvo = min(_dis_mouse, 64);
+            
+            var _alvo_x = x + lengthdir_x(_dis_alvo, _ang_mouse);
+            var _alvo_y = y + lengthdir_y(_dis_alvo, _ang_mouse);
+            
+            with(meu_item)
+            {
+                solto = true;
+                alvo_x = _alvo_x;
+                alvo_y = _alvo_y;
+                
+                // Se for um prato, desmarca a variável de segurado
+                if (variable_instance_exists(id, "sendo_segurado"))
+                {
+                    sendo_segurado = false;
+                }
+            }
+            
+            // Limpa a mão do player
+            meu_item = noone;
+        }
+    }
+}
+
+// Checa se tem um prato próximo
+checa_prato = function()
+{
+    // Se o player já estiver segurando algo como um ingrediente ou um prato, ignora
+    if (meu_item != noone) return;
         
+    var _prato_proximo = instance_nearest(x, y, obj_prato);
+    
+    if (_prato_proximo != noone)
+    {
+        var _dis = point_distance(x, y, _prato_proximo.x, _prato_proximo.y);
+        
+        if (_dis < dis_max)
+        {
+            if (interagir)
+            {
+                meu_item = _prato_proximo;
+                meu_item.sendo_segurado = true;
+            }
+        }
     }
 }
 
 // ==========================================================
+
+// Máquina de estados =========================================
 // Método se o player estiver parado
 estado_parado = function()
 {
     velh = 0;
     velv = 0;
+    
+    // Troca a sprite dependendo de estar segurando um item ou não
+    if (meu_item != noone)
+    {
+        sprite_index = spr_player_idl_pega;
+    }
+    else
+    {
+        sprite_index = spr_player_idl;
+    }
     
     // Troca para o estado de movendo
     if (left xor right || top xor down) estado_atual = estado_movendo;
@@ -97,11 +231,22 @@ estado_movendo = function()
 {
     aplica_movimento();
     
+    // Troca a sprite dependendo de estar segurando um item ou não
+    if (meu_item != noone)
+    {
+        sprite_index = spr_player_idl_pega;
+    }
+    else
+    {
+        sprite_index = spr_player_idl;
+    }
+    
     // Troca para o estada de parado
     if (velh == 0 && velv == 0) estado_atual = estado_parado;
 }
 
 // Começa no estado parado
 estado_atual = estado_parado;
+// ==========================================================
 // ==========================================================
 #endregion
