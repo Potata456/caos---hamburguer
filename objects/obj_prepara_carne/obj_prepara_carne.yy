@@ -35,5 +35,5 @@
     "path":"sprites/spr_prepara_carne/spr_prepara_carne.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

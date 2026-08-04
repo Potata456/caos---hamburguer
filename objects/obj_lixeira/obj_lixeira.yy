@@ -1,18 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"obj_lexeira",
+  "%Name":"obj_lixeira",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_lexeira",
+  "name":"obj_lixeira",
   "overriddenProperties":[],
   "parent":{
     "name":"Objetos da Loja",
     "path":"folders/Objects/Objetos da Loja.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_lata_lixo",
+    "path":"objects/obj_lata_lixo/obj_lata_lixo.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
