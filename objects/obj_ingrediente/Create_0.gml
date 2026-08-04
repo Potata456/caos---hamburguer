@@ -55,7 +55,6 @@ checa_grelha = function()
         if (image_index != INGREDIENTE.CARNE_QUEIMADA)
         {
             tempo_cozimento++;
-            show_debug_message(tempo_cozimento);
             
             // Muda para ASSADA
             if (tempo_cozimento >= tempo_para_assar && tempo_cozimento < tempo_para_queimar)

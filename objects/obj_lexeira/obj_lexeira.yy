@@ -9,8 +9,8 @@
   "name":"obj_lexeira",
   "overriddenProperties":[],
   "parent":{
-    "name":"Móveis",
-    "path":"folders/Objects/Móveis.yy",
+    "name":"Objetos da Loja",
+    "path":"folders/Objects/Objetos da Loja.yy",
   },
   "parentObjectId":null,
   "persistent":false,

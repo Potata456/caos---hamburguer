@@ -13,3 +13,6 @@ enum INGREDIENTE
     CARNE_ASSADA,
     CARNE_QUEIMADA
 }
+
+// Deixa o jogo aleatório
+randomise();

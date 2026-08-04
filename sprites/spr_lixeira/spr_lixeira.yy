@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Móveis",
-    "path":"folders/Sprites/Móveis.yy",
+    "name":"Objetos da Loja",
+    "path":"folders/Sprites/Objetos da Loja.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

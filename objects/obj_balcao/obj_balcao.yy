@@ -1,13 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_colisao",
-  "eventList":[],
+  "%Name":"obj_balcao",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_colisao",
+  "name":"obj_balcao",
   "overriddenProperties":[],
   "parent":{
-    "name":"Colisões",
-    "path":"folders/Objects/Colisões.yy",
+    "name":"Objetos da Loja",
+    "path":"folders/Objects/Objetos da Loja.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_colisao",
-    "path":"sprites/spr_colisao/spr_colisao.yy",
+    "name":"spr_balcao",
+    "path":"sprites/spr_balcao/spr_balcao.yy",
   },
   "spriteMaskId":null,
   "visible":true,

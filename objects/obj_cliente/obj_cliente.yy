@@ -1,16 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_ingrediente",
+  "%Name":"obj_cliente",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_ingrediente",
+  "name":"obj_cliente",
   "overriddenProperties":[],
   "parent":{
-    "name":"Interação",
-    "path":"folders/Objects/Interação.yy",
+    "name":"Clientes",
+    "path":"folders/Objects/Clientes.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ingrediente",
-    "path":"sprites/spr_ingrediente/spr_ingrediente.yy",
+    "name":"spr_cliente",
+    "path":"sprites/spr_cliente/spr_cliente.yy",
   },
   "spriteMaskId":null,
   "visible":true,

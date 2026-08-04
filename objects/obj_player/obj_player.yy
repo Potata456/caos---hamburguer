@@ -10,8 +10,8 @@
   "name":"obj_player",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misck",
-    "path":"folders/Objects/Misck.yy",
+    "name":"Aleatório",
+    "path":"folders/Objects/Aleatório.yy",
   },
   "parentObjectId":null,
   "persistent":false,

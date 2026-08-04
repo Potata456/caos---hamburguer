@@ -10,8 +10,8 @@
   "name":"obj_prato",
   "overriddenProperties":[],
   "parent":{
-    "name":"Móveis",
-    "path":"folders/Objects/Móveis.yy",
+    "name":"Interação",
+    "path":"folders/Objects/Interação.yy",
   },
   "parentObjectId":null,
   "persistent":false,

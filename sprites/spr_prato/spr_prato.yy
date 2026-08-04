@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Móveis",
-    "path":"folders/Sprites/Móveis.yy",
+    "name":"Interação",
+    "path":"folders/Sprites/Interação.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

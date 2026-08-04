@@ -9,8 +9,8 @@
   "name":"obj_prepara_carne",
   "overriddenProperties":[],
   "parent":{
-    "name":"Móveis",
-    "path":"folders/Objects/Móveis.yy",
+    "name":"Colisões",
+    "path":"folders/Objects/Colisões.yy",
   },
   "parentObjectId":null,
   "persistent":false,
