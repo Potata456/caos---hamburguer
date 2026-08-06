@@ -15,3 +15,7 @@ if (solto)
         solto = false;
     }
 }
+
+depth = -y;
+
+passo_timer += vel_passo;

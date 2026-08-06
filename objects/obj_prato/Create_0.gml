@@ -13,6 +13,8 @@ alvo_y = y;
 vel_voo = 0.15;
 sendo_segurado = false;
 
+inicia_efeito_pulinho(0.1, 0.15, 2);
+
 #endregion
 
 

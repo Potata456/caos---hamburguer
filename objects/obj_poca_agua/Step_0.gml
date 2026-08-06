@@ -1,0 +1,1 @@
+ passo_timer += vel_passo;

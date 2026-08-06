@@ -15,3 +15,8 @@ estado_atual();
 atualiza_posicao_item();
 soltar_item();
 
+if (keyboard_check_pressed(ord("R"))) room_restart();
+    
+depth = -y;
+
+realiza_efeito_pulinho();

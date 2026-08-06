@@ -1,4 +1,22 @@
-draw_self();
+// Calcula o efeito de esticar/achatar
+var _escala_y = 1 + sin(passo_timer) * forca_pulo;
+var _escala_x = 1 - sin(passo_timer) * (forca_pulo * 0.5);
+
+// Calcula o gira/inclinação para os lados
+var _angulo = sin(passo_timer * 0.5) * forca_giro;
+
+// Desenha a sprite com as transformações aplicadas
+draw_sprite_ext(
+    sprite_index,
+    image_index,
+    x,
+    y,
+    _escala_x * image_xscale,
+    _escala_y,
+    image_angle + _angulo,
+    image_blend,
+    image_alpha
+);
 
 // Pega a quantidade de ingredientes na lista
 var _qtd = array_length(ingredientes_prato);
@@ -12,8 +30,17 @@ for (var i = 0; i < _qtd; i++)
     var _ingrediente = ingredientes_prato[i];
     
     // Desenha o ingrediente
-    draw_sprite(spr_ingrediente, _ingrediente, x - 0.5, y - 2 - _offset_y);
+    draw_sprite_ext(
+        spr_ingrediente,
+        _ingrediente,
+        x,
+        y + 1 - _offset_y,
+        _escala_x,
+        _escala_y,
+        image_angle + _angulo,
+        image_blend,
+        image_alpha
+    );
     
-    // Aumenta a altura para o próximo ingrediente ficar um pouco mais para cima
-    _offset_y += _altura_sprite - 1.5; // Ajuste este valor
+    _offset_y += _altura_sprite - 5;
 }

@@ -1,4 +1,4 @@
-draw_self();
+desenha_efeito_pulinho();
 
 draw_circle(x, y, dis_max, 2);
 

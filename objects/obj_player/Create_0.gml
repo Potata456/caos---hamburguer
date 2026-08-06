@@ -20,7 +20,12 @@ estado_atual = noone;
 meu_item = noone;
 
 // Distanca máxima de coleta de itens e interação com os objetos
-dis_max = 16;
+dis_max = 20;
+
+colisao_lista = [obj_colisao, obj_colisao_2];
+
+// Variáveis do efeito de pulinho
+inicia_efeito_pulinho();
 
 #endregion
 
@@ -56,10 +61,10 @@ aplica_movimento = function()
 colisao = function()
 {
     // Colide na horizontal
-    move_and_collide(velh, 0, obj_colisao, 24);
+    move_and_collide(velh, 0, colisao_lista, 24);
     
     // Colide na vertical
-    move_and_collide(0, velv, obj_colisao, 24);
+    move_and_collide(0, velv, colisao_lista, 24);
     
 }
 
@@ -136,7 +141,7 @@ atualiza_posicao_item = function()
         if (instance_exists(meu_item))
         {
             meu_item.x = x;
-            meu_item.y = y - 10;
+            meu_item.y = y - 17;
             
             meu_item.depth = depth - 1;
         }
@@ -162,6 +167,18 @@ soltar_item = function()
             
             var _alvo_x = x + lengthdir_x(_dis_alvo, _ang_mouse);
             var _alvo_y = y + lengthdir_y(_dis_alvo, _ang_mouse);
+            
+            // Checa se existe colisão na linha entre o player e o alvo pretendido
+            if (collision_line(x, y, _alvo_x, _alvo_y, obj_colisao, true, true) != noone)
+            {
+                // Se houver uma parede, recuamos o ponto alvo até sair da colisão
+                while (_dis_alvo > 0 && collision_line(x, y, _alvo_x, _alvo_y, obj_colisao, true, true) != noone)
+                {
+                    _dis_alvo -= 2; // Recua 2 pixels de cada vez
+                    _alvo_x = x + lengthdir_x(_dis_alvo, _ang_mouse);
+                    _alvo_y = y + lengthdir_y(_dis_alvo, _ang_mouse);
+                }
+            }    
             
             with(meu_item)
             {
