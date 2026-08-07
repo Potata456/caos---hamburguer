@@ -248,7 +248,7 @@ estado_entrada = function()
     // checa_vomito();
     
     // Troca estado
-    if (y <= 120)
+    if (y <= room_height - 32)
     {
         // Gera o pedido inicial assim que o cliente é criado
         gera_pedido_aleatorio();
@@ -289,6 +289,10 @@ estado_neutro = function ()
             // Pedido certo
             if (_pedido_correto)
             {
+                if (obj_maneger_particulas)
+                {
+                    obj_maneger_particulas.solta_sucesso_pronto(x, y, 50);
+                }
                 show_message("Cliente recebeu o pedido correto!");
                 // Troca o estado
                 estado_atual = estado_sair_feliz;
@@ -379,15 +383,23 @@ estado_escorrega = function()
            
            if (image_angle >= 0)
            {
-               image_angle = 0;
-               pode_voltar = false;
-               
-               timer_escorrega = tempo_escorrega;
-               timer_escorrega_novo = tempo_escorrega_novo;
-               
-               muda_direcao();
-               timer_direcao = tempo_direcao;
-               estado_atual = estado_neutro;
+                image_blend = c_white;
+                image_angle = 0;
+                pode_voltar = false;
+                
+                timer_escorrega = tempo_escorrega;
+                timer_escorrega_novo = tempo_escorrega_novo;
+                
+                muda_direcao();
+                timer_direcao = tempo_direcao;
+                if (global.carne_queimada)
+                {
+                    estado_atual = estado_panico;
+                }
+                else
+                {
+                    estado_atual = estado_neutro;
+                }
            }
        }
     }
@@ -415,15 +427,23 @@ estado_escorrega = function()
            
            if (image_angle <= 0)
            {
-               image_angle = 0;
-               pode_voltar = false;
-               
-               timer_escorrega = tempo_escorrega;
-               timer_escorrega_novo = tempo_escorrega_novo;
-               
-               muda_direcao();
-               timer_direcao = tempo_direcao;
-               estado_atual = estado_neutro;
+                image_blend = c_white;
+                image_angle = 0;
+                pode_voltar = false;
+                
+                timer_escorrega = tempo_escorrega;
+                timer_escorrega_novo = tempo_escorrega_novo;
+                
+                muda_direcao();
+                timer_direcao = tempo_direcao; 
+                if (global.carne_queimada)
+                {
+                    estado_atual = estado_panico;
+                }
+                else
+                {
+                    estado_atual = estado_neutro;
+                }
            }
        }
     }
@@ -461,11 +481,14 @@ estado_panico = function()
         timer_direcao = tempo_direcao / 2;
     }
     
-    timer_panico--;
-    if (timer_panico <= 0)
+    if (!global.carne_queimada)
     {
-        timer_panico = tempo_panico;
-        estado_atual = estado_neutro;
+        timer_panico--;
+        if (timer_panico <= 0)
+        {
+            timer_panico = tempo_panico;
+            estado_atual = estado_neutro;
+        }
     }
     
     // Checa se colidio com uma parede

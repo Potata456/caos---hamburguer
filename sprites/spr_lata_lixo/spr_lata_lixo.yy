@@ -23,7 +23,7 @@
   ],
   "name":"spr_lata_lixo",
   "nineSlice":null,
-  "origin":4,
+  "origin":7,
   "parent":{
     "name":"Objetos da Loja",
     "path":"folders/Sprites/Objetos da Loja.yy",
@@ -76,7 +76,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":8,
-    "yorigin":8,
+    "yorigin":16,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

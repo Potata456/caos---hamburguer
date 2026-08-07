@@ -47,6 +47,11 @@ adicionar_ingrediente = function(_tipo_ingrediente)
     {
         array_push(ingredientes_prato, _tipo_ingrediente);
         hamburguer_pronto = true;
+        
+        if (instance_exists(obj_maneger_particulas))
+        {
+            obj_maneger_particulas.solta_sucesso_pronto(x, y - 10, 25);
+        }
         return true;
     }
     

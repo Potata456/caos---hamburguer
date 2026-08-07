@@ -126,11 +126,8 @@ checa_grelha = function()
                     estado_carne = INGREDIENTE.CARNE_QUEIMADA;
                     image_index = INGREDIENTE.CARNE_QUEIMADA;
                     
-                    // Deixa todos os clientes em panico
-                    with(obj_cliente)
-                    {
-                        panico_carne_queimada();
-                    }
+                    // Ativa o alarme
+                    global.carne_queimada = true;
                 }
             }
         }

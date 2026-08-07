@@ -17,6 +17,31 @@ enum INGREDIENTE
 // Deixa o jogo aleatório
 randomise();
 
+#region Globais
+
+// Variável global para saber se o alarme de incêndio está ligado
+global.carne_queimada = false;
+
+#endregion
+
+#region Funções
+
+// Função para saber se ainda existe alguma carne queimada na sala
+function existe_carne_queimada()
+{
+    // Procura se existe algum ingrediente
+    with (obj_ingrediente)
+    {
+        // Se encontrar alguma carne no estado QUEIMADA, retorna verdadeiro
+        if (estado_carne == INGREDIENTE.CARNE_QUEIMADA)
+        {
+            return true;
+        }
+    }
+    
+    // Se não encontrou nenhuma carne queimada
+    return false;
+}
 // Create event
 function inicia_efeito_pulinho(_vel_passo = 0.25, _forca_pulo = 0.15, _forca_giro = 4)
 {
@@ -67,3 +92,42 @@ function desenha_efeito_pulinho()
         image_alpha
     );
 }
+
+// Create Event => Para iniciar as variáveis de escala
+function inicia_efeito_squash_stretch()
+{
+    xscale = 1;
+    yscale = 1;
+}
+
+// Ação => Aplica a força do efeito em uma ação
+function aplica_efeito_squash_stretch(_xscale = 1, _yscale = 1)
+{
+    xscale = _xscale;
+    yscale = _yscale;
+}
+
+// Step Event => Faz a escala do objeto voltar ao normal
+function retorna_efeito_squash_stretch(_forcar = 0.1)
+{
+    xscale = lerp(xscale, 1, _forcar);
+    yscale = lerp(yscale, 1, _forcar);
+}
+
+// Draw Event => Desenha o efeito squash and stretch no objeto
+function desenha_efeito_squash_stretch()
+{
+    draw_sprite_ext(
+        sprite_index, 
+        image_index, 
+        x, 
+        y, 
+        xscale, 
+        yscale, 
+        image_angle, 
+        image_blend, 
+        image_alpha
+    );
+}
+
+#endregion

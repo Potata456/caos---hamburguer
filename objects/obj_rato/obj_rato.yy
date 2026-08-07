@@ -10,8 +10,8 @@
   "name":"obj_rato",
   "overriddenProperties":[],
   "parent":{
-    "name":"Clientes",
-    "path":"folders/Objects/Clientes.yy",
+    "name":"NPCS",
+    "path":"folders/Objects/NPCS.yy",
   },
   "parentObjectId":null,
   "persistent":false,

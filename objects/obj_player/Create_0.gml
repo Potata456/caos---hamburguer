@@ -5,6 +5,9 @@ vel     = 1;
 velh    = 0;
 velv    = 0;
 
+// vertical 336
+// horozontal 288
+
 // Inputs do player
 left        = false;
 right       = false;
@@ -104,6 +107,12 @@ interage_caixa = function()
                 
                 meu_item = _item;
                 meu_item.sendo_segurado = true;
+                
+                with(_caixa_proxima)
+                {
+                    muda_efeito = true;
+                    aplica_efeito_squash_stretch(1.5, 0.5);
+                }
             }
         }
     }
@@ -217,6 +226,7 @@ checa_prato = function()
     }
 }
 
+// Checa se a bancada de pratos está próxima
 checa_bancada_prato = function()
 {
     if (meu_item != noone) return;
@@ -236,6 +246,42 @@ checa_bancada_prato = function()
                 if (meu_item != noone)
                 {
                     meu_item.sendo_segurado = true;
+                }
+            }
+        }
+    }
+}
+
+// Checa o alarme está próximo
+checa_alarme = function()
+{
+    var _alarme_prox = instance_nearest(x, y, obj_alarme);
+    
+    if (_alarme_prox != noone)
+    {
+        var _dis = point_distance(x, y, _alarme_prox.x, _alarme_prox.y);
+        
+        if (_dis < dis_max)
+        {
+            if (global.carne_queimada)
+            {
+                if (interagir)
+                { 
+                    // Só desliga se não houver mais carne queimada na room
+                    if (!existe_carne_queimada())
+                    {
+                        // Desliga o alarme
+                        global.carne_queimada = false;
+                        _alarme_prox.alarme_tocando = false;
+                        
+                        // Para o som do alarme
+                        // audio_stop_sound(snd_alarme);
+                    }
+                    else
+                    {
+                        // Feedback visual/sonoro de que não é possível desligar ainda!
+                        // ex: toca um som de erro ou faz o alarme dar um pulinho
+                    }
                 }
             }
         }

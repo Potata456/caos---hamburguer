@@ -1,6 +1,7 @@
-/*
+
 if (mouse_check_button(mb_left))
 {
+    /*
     part_particles_create(
             obj_maneger_particulas.sys_particulas, 
             mouse_x + random_range(-6, 6), 
@@ -16,5 +17,13 @@ if (mouse_check_button(mb_left))
             obj_maneger_particulas.part_fumaca, 
             1
         );
+     */
+    // solta_sucesso_pronto(mouse_x, mouse_y);
+    // solta_fumaca_lixo(mouse_x, mouse_y);
 }
-*/
+
+// Checa se a carne queimou
+if (global.carne_queimada)
+{
+    chover_sprinkler();
+}

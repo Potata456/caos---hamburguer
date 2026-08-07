@@ -8,6 +8,7 @@ interage_caixa();
 checa_ingrediende();
 checa_prato(); 
 checa_bancada_prato();
+checa_alarme();
 
 estado_atual();
 
